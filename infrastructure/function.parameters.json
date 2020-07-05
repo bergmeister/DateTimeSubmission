@@ -17,9 +17,6 @@
         "serverFarmResourceGroup": {
             "value": "DateTimeSubmission"
         },
-        "alwaysOn": {
-            "value": false
-        },
         "storageAccountName": {
             "value": "storageaccountdatet88fd"
         },
