@@ -1,0 +1,24 @@
+pool:
+  name: Azure Pipelines
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'Build project'
+  inputs:
+    projects: '**/*.csproj'
+    arguments: '--output publish_output --configuration Release'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: 'publish_output/'
+    includeRootFolder: false
+
+- task: AzureFunctionApp@1
+  displayName: 'Azure Function App Deploy: DateTimeSubmission'
+  inputs:
+    azureSubscription: DateTimeSubmission
+    appType: functionApp
+    appName: DateTimeSubmission
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    appSettings: '-CosmosDBConnectionString $(CosmosDBConnectionString) -FUNCTIONS_WORKER_RUNTIME dotnet'
