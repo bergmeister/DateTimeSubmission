@@ -5,7 +5,7 @@
 # High level design
 
 An Azure function receives a POST request and via an output binding, places a DTO (data transfer object) into Cosmos DB. The DTO object is in a separate project for decoupling purposes.
-The benefit of this serverless setup is that it is highly elastic and high availability, queuing or load balancing are all being taken care of automatically. It should be noted that CosmosDB has a higher pricing point and Azure storage could also be used as an alternative. It uses .Net Core 3.1 for the runtime, which is one of the fastest runtimes available but another language would also be possible. It has built in monitoring using application insights and CosmosDB automatically takes a backup every 4 hours.
+The benefit of this serverless setup is that it is highly elastic and high availability, global data distribution,  request queuing or load balancing are all being taken care of automatically. It should be noted that CosmosDB has a higher pricing point and Azure storage could also be used as an alternative. It uses .Net Core 3.1 for the runtime, which is one of the fastest runtimes available but another language would also be possible. It has built in monitoring using application insights and CosmosDB automatically takes a backup every 4 hours.
 
 # Setup
 
